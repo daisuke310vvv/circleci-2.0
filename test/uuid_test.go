@@ -7,8 +7,13 @@ import (
 )
 
 func TestUUID(t *testing.T) {
-	uuidStr := uuid.NewV4().String()
-	if len(uuidStr) == 0 {
+	uuidV4 := uuid.NewV4()
+	if len(uuidV4.String()) == 0 {
+		t.Fatalf("length is 0")
+	}
+
+	uuidV1 := uuid.NewV1()
+	if len(uuidV1.String()) == 0 {
 		t.Fatalf("length is 0")
 	}
 }
