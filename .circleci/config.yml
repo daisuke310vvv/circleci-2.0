@@ -68,6 +68,6 @@ workflows:
   test-and-build:
     jobs:
       - build
-      - deploy:
+      - docker-deploy:
           requires:
             - build
