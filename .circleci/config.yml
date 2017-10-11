@@ -65,9 +65,9 @@ jobs:
 
 workflows:
   version: 2
-  after-test:
+  test-and-build:
     jobs:
-      - build:
+      - build
       - deploy:
           requires:
             - build
