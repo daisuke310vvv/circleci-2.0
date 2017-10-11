@@ -36,7 +36,9 @@ jobs:
           name: Install dependencies if not cached
           command: |
               if [ -d ./vendor ]; then
+                  echo "vendor directory found"
               else
+                  echo "vendor directory not found"
                   sudo apt-get install -y curl
                   curl https://glide.sh/get | sh
                   glide install
