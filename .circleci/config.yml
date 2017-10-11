@@ -9,13 +9,11 @@ jobs:
           MYSQL_ROOT_PASSWORD: password
     steps:
       - checkout
-
       - run:
         name: Install dockerize
-        command: wget https://github.com/jwilder/dockerize/releases/download/v0.5.0/dockerize-linux-amd64-v0.5.0.tar.gz && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+        command:  wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && tar -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
         environment:
-          DOCKERIZE_VERSION: v0.3.0
-
+          DOCKERIZE_VERSION: v0.5.0
       - run:
         name: Wait for db
         command: dockerize -wait tcp://localhost:3306 -timeout 1m
