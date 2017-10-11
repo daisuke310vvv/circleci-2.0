@@ -53,3 +53,21 @@ jobs:
           name: Test
           command: |
             go test test/* -v
+  hoge:
+    docker:
+      - image: circleci/golang:1.8.1
+    working_directory: /go/src/github.com/daisuke310vvv/circleci-2.0
+    steps:
+      - checkout
+      - run:
+          name: hoge
+          command: echo "hoge"
+
+workflows:
+  version: 2
+  after-test:
+    jobs:
+      - build
+      - hoge:
+          requires:
+            - build
