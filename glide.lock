@@ -1,6 +1,8 @@
-hash: 927ab85ede9df18d5799111475768232fa3b17af09be2fa4f9655521ec902846
-updated: 2017-10-11T16:52:15.821121578+09:00
+hash: 95b3d38cdb21d63b6d7511b1a6da34bff761b0fd4399153e0921323336e9984c
+updated: 2017-10-11T17:19:02.870390291+09:00
 imports:
+- name: github.com/bluele/slack
+  version: fb5cadcf9ed2433b94f44b2bc046a7f94554533e
 - name: github.com/satori/go.uuid
   version: 5bf94b69c6b68ee1b541973bb8e1144db23a194b
 testImports: []
