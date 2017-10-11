@@ -9,7 +9,7 @@ jobs:
           MYSQL_USER: root
           MYSQL_ROOT_PASSWORD: password
 
-    working_directory: /go/src/github.com/popshootjapan/dogenzaka-server
+    working_directory: /go/src/github.com/daisuke310vvv/circleci-2.0
 
     steps:
       - checkout
@@ -33,11 +33,14 @@ jobs:
               - glide-cache-{{ checksum "glide.lock" }}
 
       - run:
-          name: Install dependencies
+          name: Install dependencies if not cached
           command: |
-              sudo apt-get install -y curl
-              curl https://glide.sh/get | sh
-              glide install
+              if [ -d ./vendor ]; then
+              else
+                  sudo apt-get install -y curl
+                  curl https://glide.sh/get | sh
+                  glide install
+              fi
 
       - save_cache:
           key: glide-cache-{{ checksum "glide.lock" }}
