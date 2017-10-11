@@ -7,5 +7,5 @@ import (
 )
 
 func main() {
-	fmt.Println("hello world", uuid.NewV4().String())
+	fmt.Println("hello world2", uuid.NewV4().String())
 }
