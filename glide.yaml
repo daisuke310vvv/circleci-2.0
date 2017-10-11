@@ -1,0 +1,3 @@
+package: github.com/daisuke310vvv/circleci-2.0
+import:
+- package: github.com/satori/go.uuid
