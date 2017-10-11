@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  test:
+  build:
     working_directory: /go/src/github.com/daisuke310vvv/circleci-2.0
     docker:
       - image: circleci/golang:1.8.1
@@ -44,12 +44,6 @@ jobs:
           name: Test
           command: |
             go test test/* -v
-  build:
-    working_directory: /go/src/github.com/daisuke310vvv/circleci-2.0
-    docker:
-      - image: circleci/golang:1.8.1
-    steps:
-      - checkout
       - run: mkdir -p workspace
       - run: go build -o workspace/server
       - run: cp Dockerfile workspace/Dockerfile
@@ -73,10 +67,7 @@ workflows:
   version: 2
   after-test:
     jobs:
-      - test
       - build:
-          requires:
-            - test
       - deploy:
           requires:
             - build
