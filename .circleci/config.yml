@@ -1,13 +1,9 @@
-defaults: &defaults
-  working_directory: /go/src/github.com/daisuke310vvv/circleci-2.0
-  docker:
-    - image: circleci/golang:1.8.1
-
 version: 2
 jobs:
   test:
-    <<: *defaults
+    working_directory: /go/src/github.com/daisuke310vvv/circleci-2.0
     docker:
+      - image: circleci/golang:1.8.1
       - image: mysql:5.7.18
         environment:
           MYSQL_USER: root
@@ -49,7 +45,9 @@ jobs:
           command: |
             go test test/* -v
   build:
-    <<: *defaults
+    working_directory: /go/src/github.com/daisuke310vvv/circleci-2.0
+    docker:
+      - image: circleci/golang:1.8.1
     steps:
       - checkout
       - run: mkdir -p workspace
@@ -61,7 +59,9 @@ jobs:
             - server
             - Dockerfile
   docker-deploy:
-    <<: *defaults
+    working_directory: /go/src/github.com/daisuke310vvv/circleci-2.0
+    docker:
+      - image: circleci/golang:1.8.1
     steps:
       - attach_workspace:
           at: workspace
